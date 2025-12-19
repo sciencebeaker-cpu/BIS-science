@@ -1,0 +1,246 @@
+import React, { useState, useEffect } from 'react';
+import { Zap, Snowflake, CheckCircle, AlertCircle, RefreshCw, ArrowDown, Trash2 } from 'lucide-react';
+
+const App = () => {
+  const initialCards = [
+    { id: 1, text: "Temperature increases from 20°C to 45°C", category: "exothermic", type: "Observation" },
+    { id: 2, text: "Reaction mixture feels cold to the touch", category: "endothermic", type: "Observation" },
+    { id: 3, text: "Combustion of Methane (Burning)", category: "exothermic", type: "Process" },
+    { id: 4, text: "Thermal Decomposition (Heat added)", category: "endothermic", type: "Process" },
+    { id: 5, text: "Water turning into steam (Evaporation)", category: "endothermic", type: "Phase Change" },
+    { id: 6, text: "Liquid water turning into ice (Freezing)", category: "exothermic", type: "Phase Change" },
+    { id: 7, text: "Photosynthesis (Absorbing sunlight)", category: "endothermic", type: "Process" },
+    { id: 8, text: "Neutralization (Acid + Alkali)", category: "exothermic", type: "Process" },
+    { id: 9, text: "Respiration in cells", category: "exothermic", type: "Process" },
+    { id: 10, text: "An ice cube melting in your hand", category: "endothermic", type: "Phase Change" },
+    { id: 11, text: "Steam turning back into liquid (Condensation)", category: "exothermic", type: "Phase Change" },
+    { id: 12, text: "Self-heating coffee can activated", category: "exothermic", type: "Observation" }
+  ];
+
+  const [deck, setDeck] = useState([]);
+  const [exoList, setExoList] = useState([]);
+  const [endoList, setEndoList] = useState([]);
+  const [feedback, setFeedback] = useState(null);
+  const [score, setScore] = useState(null);
+
+  useEffect(() => {
+    shuffleDeck();
+  }, []);
+
+  const shuffleDeck = () => {
+    const shuffled = [...initialCards].sort(() => Math.random() - 0.5);
+    setDeck(shuffled);
+    setExoList([]);
+    setEndoList([]);
+    setFeedback(null);
+    setScore(null);
+  };
+
+  const handleMove = (card, target) => {
+    setDeck(prev => prev.filter(c => c.id !== card.id));
+    setExoList(prev => prev.filter(c => c.id !== card.id));
+    setEndoList(prev => prev.filter(c => c.id !== card.id));
+
+    if (target === 'exo') setExoList(prev => [...prev, card]);
+    if (target === 'endo') setEndoList(prev => [...prev, card]);
+    if (target === 'deck') setDeck(prev => [...prev, card]);
+    
+    setScore(null);
+  };
+
+  const checkAnswers = () => {
+    let correct = 0;
+    exoList.forEach(c => { if (c.category === 'exothermic') correct++; });
+    endoList.forEach(c => { if (c.category === 'endothermic') correct++; });
+    
+    const totalPlaced = exoList.length + endoList.length;
+    const totalCards = initialCards.length;
+
+    if (totalPlaced < totalCards) {
+      setFeedback({ type: 'warning', text: `Place all ${totalCards} cards first.` });
+    } else {
+      setScore(correct);
+      if (correct === totalCards) {
+        setFeedback({ type: 'success', text: "Perfect! All concepts correctly identified." });
+      } else {
+        setFeedback({ type: 'error', text: `${correct}/${totalCards} correct. Review errors!` });
+      }
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 p-2 md:p-6 font-sans text-slate-800 flex flex-col items-center">
+      <div className="w-full max-w-6xl">
+        {/* Compact Header */}
+        <header className="flex flex-col md:flex-row justify-between items-center bg-white p-4 rounded-xl shadow-sm border border-slate-200 mb-4 gap-4">
+          <div className="text-center md:text-left">
+            <h1 className="text-xl font-black text-slate-900 leading-none">The Enthalpy Sorter</h1>
+            <p className="text-xs text-slate-500 font-medium">MYP5 Science: Unit 3 Equilibrium</p>
+          </div>
+          <div className="flex gap-2">
+            <button 
+              onClick={shuffleDeck}
+              className="flex items-center gap-1.5 px-4 py-1.5 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition text-xs font-bold"
+            >
+              <RefreshCw size={14} /> Reset
+            </button>
+            <button 
+              onClick={checkAnswers}
+              className="flex items-center gap-1.5 px-4 py-1.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-xs font-bold shadow-sm"
+            >
+              <CheckCircle size={14} /> Check
+            </button>
+          </div>
+        </header>
+
+        {/* FORCED Side-by-Side Sorting Zones */}
+        <div className="grid grid-cols-2 gap-3 md:gap-6 mb-4">
+          {/* Exothermic Zone */}
+          <div className="bg-orange-50 border-2 border-orange-200 rounded-2xl p-3 md:p-4 flex flex-col h-[400px]">
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <Zap size={18} className="text-orange-500" fill="currentColor" />
+                <span className="text-sm font-black text-orange-800 tracking-tight hidden sm:inline">EXOTHERMIC</span>
+                <span className="text-xs font-black text-orange-800 sm:hidden">EXO</span>
+              </div>
+              <span className="bg-orange-200 text-orange-900 px-2 py-0.5 rounded text-[10px] font-black">-ΔH</span>
+            </div>
+            
+            <div className="flex-1 overflow-y-auto space-y-2 pr-1 custom-scrollbar">
+              {exoList.map(card => (
+                <CardItem 
+                  key={card.id} 
+                  card={card} 
+                  onMove={() => handleMove(card, 'deck')} 
+                  isCheck={score !== null}
+                  isCorrect={card.category === 'exothermic'}
+                />
+              ))}
+              {exoList.length === 0 && (
+                <div className="h-full flex flex-col items-center justify-center border-2 border-dashed border-orange-200 rounded-xl opacity-40">
+                  <p className="text-[10px] font-bold text-orange-400 text-center px-2 italic">Drop Exo cards</p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Endothermic Zone */}
+          <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-3 md:p-4 flex flex-col h-[400px]">
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <Snowflake size={18} className="text-blue-500" />
+                <span className="text-sm font-black text-blue-800 tracking-tight hidden sm:inline">ENDOTHERMIC</span>
+                <span className="text-xs font-black text-blue-800 sm:hidden">ENDO</span>
+              </div>
+              <span className="bg-blue-200 text-blue-900 px-2 py-0.5 rounded text-[10px] font-black">+ΔH</span>
+            </div>
+
+            <div className="flex-1 overflow-y-auto space-y-2 pr-1 custom-scrollbar">
+              {endoList.map(card => (
+                <CardItem 
+                  key={card.id} 
+                  card={card} 
+                  onMove={() => handleMove(card, 'deck')} 
+                  isCheck={score !== null}
+                  isCorrect={card.category === 'endothermic'}
+                />
+              ))}
+              {endoList.length === 0 && (
+                <div className="h-full flex flex-col items-center justify-center border-2 border-dashed border-blue-200 rounded-xl opacity-40">
+                  <p className="text-[10px] font-bold text-blue-400 text-center px-2 italic">Drop Endo cards</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Card Pool - More compact list below */}
+        <div className="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm overflow-hidden">
+          <div className="flex items-center gap-2 mb-3">
+            <ArrowDown className="text-slate-400" size={14} />
+            <h2 className="text-xs font-bold text-slate-500 uppercase tracking-widest">Available Cards</h2>
+          </div>
+          
+          <div className="flex flex-wrap gap-2 max-h-[250px] overflow-y-auto pr-1">
+            {deck.map(card => (
+              <div key={card.id} className="bg-slate-50 border border-slate-200 rounded-xl p-3 w-full sm:w-[calc(50%-4px)] md:w-[calc(33.33%-6px)] lg:w-[calc(25%-6px)] flex flex-col justify-between hover:bg-white transition-all group shrink-0">
+                <div className="mb-2">
+                  <div className="text-[9px] font-black uppercase text-slate-400 mb-0.5">{card.type}</div>
+                  <div className="text-[11px] font-bold text-slate-700 leading-tight">{card.text}</div>
+                </div>
+                <div className="grid grid-cols-2 gap-1.5">
+                  <button 
+                    onClick={() => handleMove(card, 'exo')}
+                    className="py-1 bg-orange-500 text-white text-[9px] font-black uppercase rounded-md hover:bg-orange-600 transition"
+                  >
+                    Exo
+                  </button>
+                  <button 
+                    onClick={() => handleMove(card, 'endo')}
+                    className="py-1 bg-blue-500 text-white text-[9px] font-black uppercase rounded-md hover:bg-blue-600 transition"
+                  >
+                    Endo
+                  </button>
+                </div>
+              </div>
+            ))}
+            {deck.length === 0 && (
+              <div className="w-full text-center py-6 text-slate-300 font-bold text-sm italic border-2 border-dashed border-slate-100 rounded-xl">
+                All cards sorted!
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Persistent Feedback Area */}
+      {feedback && (
+        <div className={`mt-4 px-6 py-2 rounded-lg shadow-lg flex items-center gap-3 animate-in fade-in zoom-in duration-200
+          ${feedback.type === 'success' ? 'bg-emerald-600 text-white' : 
+            feedback.type === 'error' ? 'bg-rose-600 text-white' : 'bg-amber-500 text-white'}`}>
+          {feedback.type === 'success' ? <CheckCircle size={18} /> : <AlertCircle size={18} />}
+          <span className="font-bold text-sm">{feedback.text}</span>
+        </div>
+      )}
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+      `}} />
+    </div>
+  );
+};
+
+const CardItem = ({ card, onMove, isCheck, isCorrect }) => {
+  return (
+    <div className={`
+      relative p-3 rounded-xl border shadow-sm transition-all animate-in zoom-in-95
+      ${isCheck 
+        ? (isCorrect ? 'bg-emerald-50 border-emerald-300 text-emerald-900' : 'bg-rose-50 border-rose-300 text-rose-900')
+        : 'bg-white border-white hover:shadow-md'
+      }
+    `}>
+      <div className="flex justify-between items-start mb-0.5">
+        <div className="text-[8px] font-black uppercase tracking-wider opacity-40">{card.type}</div>
+        {isCheck && (
+          <div className="flex-shrink-0">
+            {isCorrect ? <CheckCircle size={12} className="text-emerald-500" /> : <AlertCircle size={12} className="text-rose-500" />}
+          </div>
+        )}
+      </div>
+      <div className="text-[11px] font-bold leading-tight">{card.text}</div>
+      
+      {!isCheck && (
+        <button 
+          onClick={onMove}
+          className="mt-1 text-[8px] font-black text-slate-400 hover:text-slate-600 uppercase flex items-center gap-1"
+        >
+          <Trash2 size={10} /> Undo
+        </button>
+      )}
+    </div>
+  );
+};
+
+export default App;
