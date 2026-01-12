@@ -57,7 +57,7 @@
             </div>
 
             <!-- Activity Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                 
                 <!-- Activity 1: Enthalpy Sorter -->
                 <div class="unit-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
@@ -83,51 +83,75 @@
                     </div>
                 </div>
 
-                <!-- Activity 2: Kinetics Simulator (Placeholder) -->
-                <div class="unit-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col opacity-60">
-                    <div class="h-3 bg-indigo-200"></div>
+                <!-- Activity 2: Kinetics Simulator -->
+                <div class="unit-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="h-3 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
                     <div class="p-6 flex-grow">
                         <div class="flex items-center gap-3 mb-4">
-                            <div class="bg-indigo-100 text-indigo-400 p-2 rounded-lg">
-                                <i class="fas fa-running"></i>
+                            <div class="bg-indigo-100 text-indigo-600 p-2 rounded-lg">
+                                <i class="fas fa-atom"></i>
                             </div>
-                            <h3 class="font-bold text-lg text-slate-400">Kinetics Explorer</h3>
+                            <h3 class="font-bold text-lg">Collision Theory Sim</h3>
                         </div>
-                        <p class="text-slate-500 text-sm mb-6">
+                        <p class="text-slate-600 text-sm mb-6">
                             Investigate how temperature, concentration, and surface area affect reaction rates through particle collision theory.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-slate-50 text-slate-400 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-tighter">Coming Soon</span>
+                            <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-[10px] font-bold uppercase">Learning Outcome 4</span>
                         </div>
                     </div>
                     <div class="p-6 pt-0">
-                        <button disabled class="w-full text-center py-3 bg-slate-100 text-slate-400 rounded-xl font-bold cursor-not-allowed">
-                            In Development
-                        </button>
+                        <a href="KineticsSim.html" class="block w-full text-center py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition">
+                            Launch Simulation <i class="fas fa-external-link-alt ml-2 text-xs opacity-50"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Activity 3: Haber Process (Placeholder) -->
-                <div class="unit-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col opacity-60">
-                    <div class="h-3 bg-indigo-200"></div>
+                <!-- Activity 3: Reaction Profile Architect -->
+                <div class="unit-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="h-3 bg-gradient-to-r from-rose-500 to-purple-600"></div>
                     <div class="p-6 flex-grow">
                         <div class="flex items-center gap-3 mb-4">
-                            <div class="bg-emerald-100 text-emerald-400 p-2 rounded-lg">
-                                <i class="fas fa-industry"></i>
+                            <div class="bg-purple-100 text-purple-600 p-2 rounded-lg">
+                                <i class="fas fa-chart-line"></i>
                             </div>
-                            <h3 class="font-bold text-lg text-slate-400">Haber Process Simulator</h3>
+                            <h3 class="font-bold text-lg">Reaction Architect</h3>
                         </div>
-                        <p class="text-slate-500 text-sm mb-6">
-                            Balance the compromise between rate and yield by adjusting pressure and temperature in industrial ammonia production.
+                        <p class="text-slate-600 text-sm mb-6">
+                            Design energy profile diagrams. Adjust activation energy and enthalpy change to match specific reaction targets.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-slate-50 text-slate-400 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-tighter">Coming Soon</span>
+                            <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-[10px] font-bold uppercase">Learning Outcome 6 & 9</span>
                         </div>
                     </div>
                     <div class="p-6 pt-0">
-                        <button disabled class="w-full text-center py-3 bg-slate-100 text-slate-400 rounded-xl font-bold cursor-not-allowed">
-                            In Development
-                        </button>
+                        <a href="ReactionProfile.html" class="block w-full text-center py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition">
+                            Launch Tool <i class="fas fa-external-link-alt ml-2 text-xs opacity-50"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Activity 4: Haber Process Manager -->
+                <div class="unit-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="h-3 bg-gradient-to-r from-emerald-500 to-teal-600"></div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-emerald-100 text-emerald-600 p-2 rounded-lg">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <h3 class="font-bold text-lg">Haber Process Manager</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-6">
+                            Manage an ammonia plant. Balance the compromise between rate, yield, and safety by adjusting industrial conditions.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-[10px] font-bold uppercase">Learning Outcome 15-18</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="HaberProcess.html" class="block w-full text-center py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition">
+                            Launch Simulation <i class="fas fa-external-link-alt ml-2 text-xs opacity-50"></i>
+                        </a>
                     </div>
                 </div>
 
