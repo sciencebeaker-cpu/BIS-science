@@ -53,32 +53,80 @@
                     <h2 class="text-2xl font-extrabold text-slate-800">Unit 3: Equilibrium (Balance)</h2>
                     <p class="text-slate-500">Kinetics, Energetics, and Reversible Reactions</p>
                 </div>
-                <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">8 Week Unit</span>
+                <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Active Unit</span>
             </div>
 
             <!-- Activity Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- Activity 1: Enthalpy Sorter -->
-                <div class="unit-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
-                    <div class="h-3 bg-gradient-to-r from-orange-400 to-blue-400"></div>
+                <!-- NEW: Equilibrium Lab Pro (React App) -->
+                <div class="unit-card bg-slate-900 rounded-2xl border-2 border-indigo-500 shadow-xl overflow-hidden flex flex-col group">
+                    <div class="h-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
                     <div class="p-6 flex-grow">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="bg-orange-100 text-orange-600 p-2 rounded-lg">
-                                <i class="fas fa-fire"></i>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-indigo-500/20 text-indigo-400 p-2 rounded-lg">
+                                    <i class="fas fa-microscope"></i>
+                                </div>
+                                <h3 class="font-bold text-lg text-white">Le Chatelier Pro</h3>
                             </div>
-                            <h3 class="font-bold text-lg">The Enthalpy Sorter</h3>
+                            <span class="animate-pulse text-[10px] font-black bg-indigo-500 text-white px-2 py-0.5 rounded">LIVE SIM</span>
                         </div>
-                        <p class="text-slate-600 text-sm mb-6">
-                            Practice identifying Exothermic and Endothermic processes, sign conventions (ΔH), and heat flow directions.
+                        <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                            Advanced kinetic simulator. Adjust temperature, pressure, and gas moles in real-time with functional syringe visualizations.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-[10px] font-bold uppercase">Learning Outcome 7 & 8</span>
+                            <span class="bg-slate-800 text-indigo-400 px-2 py-1 rounded text-[10px] font-bold uppercase border border-indigo-500/30">Dynamic Equilibrium</span>
                         </div>
                     </div>
                     <div class="p-6 pt-0">
-                        <a href="EnthalpySorter.html" class="block w-full text-center py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition">
-                            Launch Activity <i class="fas fa-external-link-alt ml-2 text-xs opacity-50"></i>
+                        <a href="Equilibrium_Lab_Pro.jsx" class="block w-full text-center py-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-500 transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)]">
+                            Open Simulator <i class="fas fa-play ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Activity 4: Equilibrium Shift Gallery (POE) -->
+                <div class="unit-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="h-3 bg-gradient-to-r from-yellow-400 to-amber-600"></div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-amber-100 text-amber-600 p-2 rounded-lg">
+                                <i class="fas fa-vial-circle-check"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-800">Shift Gallery (POE)</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-6">
+                            Predict, Observe, and Explain equilibrium shifts using classic lab tube demonstrations.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-[10px] font-bold uppercase">Qualitative Analysis</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="POE_Gallery.html" class="block w-full text-center py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition">
+                            Launch Station <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Activity 5: Haber Process Manager -->
+                <div class="unit-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="h-3 bg-gradient-to-r from-emerald-500 to-teal-600"></div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-emerald-100 text-emerald-600 p-2 rounded-lg">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-800">Haber Process Manager</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-6">
+                            Industrial strategy game. Balance the compromise between rate, yield, and profit in ammonia production.
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="HaberProcess.html" class="block w-full text-center py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition">
+                            Launch Sim <i class="fas fa-arrow-right ml-2 text-xs"></i>
                         </a>
                     </div>
                 </div>
@@ -91,18 +139,36 @@
                             <div class="bg-indigo-100 text-indigo-600 p-2 rounded-lg">
                                 <i class="fas fa-atom"></i>
                             </div>
-                            <h3 class="font-bold text-lg">Collision Theory Sim</h3>
+                            <h3 class="font-bold text-lg text-slate-800">Collision Theory Sim</h3>
                         </div>
                         <p class="text-slate-600 text-sm mb-6">
-                            Investigate how temperature, concentration, and surface area affect reaction rates through particle collision theory.
+                            Microscopic particle view. Investigate how temperature and surface area impact collision frequency.
                         </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-[10px] font-bold uppercase">Learning Outcome 4</span>
-                        </div>
                     </div>
                     <div class="p-6 pt-0">
                         <a href="KineticsSim.html" class="block w-full text-center py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition">
-                            Launch Simulation <i class="fas fa-external-link-alt ml-2 text-xs opacity-50"></i>
+                            Launch Sim <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Activity 1: Enthalpy Sorter -->
+                <div class="unit-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="h-3 bg-gradient-to-r from-orange-400 to-blue-400"></div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-orange-100 text-orange-600 p-2 rounded-lg">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-800">Enthalpy Sorter</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-6">
+                            Sorting game to master exothermic vs endothermic phase changes and chemical processes.
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="EnthalpySorter.html" class="block w-full text-center py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition">
+                            Launch Activity <i class="fas fa-arrow-right ml-2 text-xs"></i>
                         </a>
                     </div>
                 </div>
@@ -115,42 +181,15 @@
                             <div class="bg-purple-100 text-purple-600 p-2 rounded-lg">
                                 <i class="fas fa-chart-line"></i>
                             </div>
-                            <h3 class="font-bold text-lg">Reaction Architect</h3>
+                            <h3 class="font-bold text-lg text-slate-800">Reaction Architect</h3>
                         </div>
                         <p class="text-slate-600 text-sm mb-6">
-                            Design energy profile diagrams. Adjust activation energy and enthalpy change to match specific reaction targets.
+                            Design energy profile diagrams. Adjust activation energy and enthalpy to match target chemical scenarios.
                         </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-[10px] font-bold uppercase">Learning Outcome 6 & 9</span>
-                        </div>
                     </div>
                     <div class="p-6 pt-0">
                         <a href="ReactionProfile.html" class="block w-full text-center py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition">
-                            Launch Tool <i class="fas fa-external-link-alt ml-2 text-xs opacity-50"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Activity 4: Haber Process Manager -->
-                <div class="unit-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
-                    <div class="h-3 bg-gradient-to-r from-emerald-500 to-teal-600"></div>
-                    <div class="p-6 flex-grow">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="bg-emerald-100 text-emerald-600 p-2 rounded-lg">
-                                <i class="fas fa-industry"></i>
-                            </div>
-                            <h3 class="font-bold text-lg">Haber Process Manager</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm mb-6">
-                            Manage an ammonia plant. Balance the compromise between rate, yield, and safety by adjusting industrial conditions.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-[10px] font-bold uppercase">Learning Outcome 15-18</span>
-                        </div>
-                    </div>
-                    <div class="p-6 pt-0">
-                        <a href="HaberProcess.html" class="block w-full text-center py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition">
-                            Launch Simulation <i class="fas fa-external-link-alt ml-2 text-xs opacity-50"></i>
+                            Launch Tool <i class="fas fa-arrow-right ml-2 text-xs"></i>
                         </a>
                     </div>
                 </div>
@@ -158,29 +197,35 @@
             </div>
         </div>
 
-        <!-- Resources Section -->
+        <!-- Extra Resources Section -->
         <section class="mt-20">
-            <h2 class="text-xl font-extrabold text-slate-800 mb-6">Unit Documentation</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="p-4 bg-white border border-slate-200 rounded-xl flex items-center justify-between">
+            <h2 class="text-xl font-extrabold text-slate-800 mb-6 border-l-4 border-indigo-600 pl-4">Criterion C Support</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Evaluation Resource Pack -->
+                <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 flex items-center justify-between hover:border-indigo-500 transition-all shadow-lg group">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-indigo-500/10 text-indigo-400 p-3 rounded-xl group-hover:bg-indigo-500 group-hover:text-white transition-all">
+                            <i class="fas fa-file-pen text-2xl"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold text-white">Evaluation Masterclass</div>
+                            <div class="text-[10px] text-slate-500 uppercase font-black tracking-widest">Methods & Improvements Guide</div>
+                        </div>
+                    </div>
+                    <a href="Evaluation_Resource_Pack.md" class="text-indigo-400 hover:text-white transition-colors">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                
+                <div class="p-6 bg-white border border-slate-200 rounded-2xl flex items-center justify-between hover:border-indigo-300 transition-colors">
                     <div class="flex items-center gap-4">
                         <div class="text-rose-500 text-2xl"><i class="fas fa-file-pdf"></i></div>
                         <div>
-                            <div class="font-bold text-sm">Unit Checklist & Outcomes</div>
-                            <div class="text-[10px] text-slate-400 uppercase font-black">Criterion A Preparation</div>
+                            <div class="font-bold text-slate-800 text-sm">Unit Checklist & Outcomes</div>
+                            <div class="text-[10px] text-slate-400 uppercase font-black tracking-tighter">Criterion A Prep</div>
                         </div>
                     </div>
-                    <a href="#" class="text-indigo-600 hover:text-indigo-800"><i class="fas fa-download"></i></a>
-                </div>
-                <div class="p-4 bg-white border border-slate-200 rounded-xl flex items-center justify-between">
-                    <div class="flex items-center gap-4">
-                        <div class="text-blue-500 text-2xl"><i class="fas fa-file-word"></i></div>
-                        <div>
-                            <div class="font-bold text-sm">Criterion B/C Lab Guide</div>
-                            <div class="text-[10px] text-slate-400 uppercase font-black">Internal Assessment</div>
-                        </div>
-                    </div>
-                    <a href="#" class="text-indigo-600 hover:text-indigo-800"><i class="fas fa-download"></i></a>
+                    <a href="#" class="text-indigo-600"><i class="fas fa-download"></i></a>
                 </div>
             </div>
         </section>
@@ -189,8 +234,8 @@
 
     <footer class="mt-20 border-t border-slate-200 bg-white py-12">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-slate-400 text-xs font-medium uppercase tracking-widest">
-                Developed for MYP5 Science | International School Chemistry
+            <p class="text-slate-400 text-[10px] font-bold uppercase tracking-[0.2em]">
+                MYP5 Chemistry Learning Hub &bull; Unit 3 Equilibrium &bull; 2025-2026
             </p>
         </div>
     </footer>
